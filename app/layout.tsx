@@ -15,8 +15,9 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       {/* 关键修改：
-        1. 删除了 Google Fonts (Geist, Geist_Mono) 的引用
-        2. 这里的 antialiased 是 Tailwind 的平滑抗锯齿类
+         1. 删除了顶部 import { Geist ... } from "next/font/google"
+         2. 删除了 body 里的 ${geistSans.variable} 等变量
+         3. 只保留了 antialiased (平滑抗锯齿)
       */}
       <body className="antialiased bg-neutral-950 text-neutral-200">
         {children}
