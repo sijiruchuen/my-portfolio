@@ -4,10 +4,9 @@ import { Github, Twitter } from "lucide-react";
 import XIcon from "@/components/Icons";
 
 // 导航数据配置
-const NAV_ITEMS = [
-  { name: 'Home', href: '/#hero' },     // 注意：加了 / 防止在其他页面点击时跳不回来
-  { name: 'Skills', href: '/#skills' },
-  { name: 'Projects', href: '/#projects' },
+const NAV_ITEMS = [     
+{ name: '技术栈', href: '/#skills' },// 注意：加了 / 防止在其他页面点击时跳不回来
+{ name: '我的项目', href: '/#projects' },
 ];
 
 export default function Navbar() {
@@ -16,7 +15,7 @@ export default function Navbar() {
       <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="font-bold text-xl tracking-tighter hover:text-white transition-colors">
-          Mark xu的博客
+        The Blog of Mark Xu
         </Link>
 
         {/* 中间链接 */}

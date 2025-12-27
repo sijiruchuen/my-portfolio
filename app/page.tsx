@@ -86,7 +86,7 @@ export default function Home() {
               <Link href="#projects" className="px-6 py-3 rounded-lg bg-neutral-100 text-neutral-950 font-semibold hover:bg-white transition-colors">
                 查看项目
               </Link>
-              <a href="https://github.com" target="_blank" className="px-6 py-3 rounded-lg bg-neutral-900 text-white border border-neutral-800 hover:bg-neutral-800 transition-colors">
+              <a href="https://github.com/sijiruchuen" target="_blank" className="px-6 py-3 rounded-lg bg-neutral-900 text-white border border-neutral-800 hover:bg-neutral-800 transition-colors">
                 Github
               </a>
             </div>
