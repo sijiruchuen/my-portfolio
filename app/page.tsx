@@ -1,22 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Github,
-  Twitter,
-  Mail,
-  ExternalLink,
-  Code2,
-  Terminal,
-  User,
   MapPin,
   School,
-  Cpu,
-  Sparkles,
-  ArrowRight
+  ArrowRight,
+  ArrowUpRight,
+  Terminal,
+  Code2,
+  ExternalLink,
+  Mail
 } from "lucide-react";
 
-// --- 数据区 ---
-const SKILLS = ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Solidity', 'Web3.js', 'Git'];
+import {
+  FadeIn,
+  StaggerContainer,
+  StaggerItem,
+  FadeInView,
+  SpringHover
+} from "@/components/motion";
+
+const SKILLS = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "Node.js",
+  "Solidity",
+  "Web3.js",
+  "Git",
+];
 
 const PROJECTS = [
   {
@@ -24,177 +36,155 @@ const PROJECTS = [
     desc: "一个基于 Next.js 和 Wagmi 的去中心化应用 NFT 交易市场。",
     tags: ["Next.js", "React", "Wagmi"],
     link: "https://github.com",
-    isExternal: true
+    isExternal: true,
   },
   {
     title: "Mark 的 AI 工坊",
     desc: "基于 AI 图像生成技术的商业化服务流程。利用 Stable Diffusion 和 Photoshop 为客户提供定制化修图服务，优化了 Prompt 工程流",
     tags: ["Nanobanana", "React", "Tailwind css"],
     link: "/projects/iot-platform",
-    isExternal: false
-  }
+    isExternal: false,
+  },
 ];
 
 export default function Home() {
   return (
-    <div className="min-h-screen font-sans selection:bg-blue-500/30">
-
-      <main className="max-w-4xl mx-auto px-6 pt-32 pb-20">
-
-        {/* --- 1. Hero Section (头像 + 名字 + 特征) --- */}
-        <section id="hero" className="mb-32 flex flex-col-reverse md:flex-row items-center justify-between gap-10 animate-in fade-in slide-in-from-bottom-4 duration-700 scroll-mt-32">
-
-          {/* 左侧：文字信息 */}
-          <div className="flex-1 text-center md:text-left">
-            {/* 状态徽标 */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-sm text-blue-400 mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-              </span>
-              Available for work
-            </div>
-
-            {/* 名字 */}
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent">
-              Mark xu
+    <div className="min-h-screen">
+      <main className="max-w-4xl mx-auto px-6 pt-24 pb-20">
+        
+        {/* --- Hero Section --- */}
+        <FadeIn delay={0.1} className="py-20 flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="flex-1 space-y-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-2">
+              Hello, I'm <br className="hidden md:block"/>
+              <span className="text-blue-500">Mark Xu</span>
             </h1>
-
-            {/* --- 新增：基本特征 (Icons + Text) --- */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-6 text-sm text-neutral-400 font-medium">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-neutral-900 border border-neutral-800">
-                <MapPin size={14} className="text-blue-500" />
-                <span>Chengdu, CN</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-neutral-900 border border-neutral-800">
-                <School size={14} className="text-purple-500" />
-                <span>Student @ SPTC</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-neutral-900 border border-neutral-800">
-                <Cpu size={14} className="text-green-500" />
-                <span>Electronic Info</span>
-              </div>
-            </div>
-
-            <p className="text-xl text-neutral-400 max-w-2xl leading-relaxed mb-8">
-              Web3 探索者 / 全栈开发者。<br />
-              致力于构建连接现实硬件与去中心化网络的数字桥梁。
+            <p className="text-xl md:text-2xl text-neutral-400 font-light flex items-center gap-3">
+              Web3 探索者 <span className="text-neutral-700">|</span> 全栈开发者
             </p>
-
-            {/* 按钮组 */}
-            <div className="flex gap-4 justify-center md:justify-start">
-              <Link href="#projects" className="px-6 py-3 rounded-lg bg-neutral-100 text-neutral-950 font-semibold hover:bg-white transition-colors">
-                查看项目
+            
+            <p className="text-neutral-500 max-w-lg leading-relaxed">
+              就读于 SPTC 电子信息工程专业。致力于构建连接现实硬件与去中心化网络的数字桥梁。热爱开源、Web3 与 AI 技术。
+            </p>
+            
+            <div className="flex items-center gap-4 pt-4">
+              <Link href="/about" className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors flex items-center gap-2">
+                关于我 <ArrowRight size={16} />
               </Link>
-              <a href="https://github.com/sijiruchuen" target="_blank" className="px-6 py-3 rounded-lg bg-neutral-900 text-white border border-neutral-800 hover:bg-neutral-800 transition-colors">
+              <a href="https://github.com/sijiruchuen" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-full bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-neutral-300 font-medium transition-colors">
                 Github
               </a>
             </div>
           </div>
-
-          {/* --- 右侧：头像区域 --- */}
-          {/* 使用 relative 和 group 实现 hover 发光效果 */}
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-neutral-950 bg-neutral-900">
-              {/* 如果你有图片，请取消下面 Image 的注释，并将 User 图标删掉 */}
-              {/* 记得把图片放在 public/avatar.png */}
-
-              <Image
-                src="/avatar.png"
-                alt="Mark Xu"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+          
+          {/* Right Avatar */}
+          <div className="relative shrink-0 flex justify-center">
+            <SpringHover className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border border-neutral-800 bg-neutral-900 relative z-10 block">
+              <Image src="/avatar.png" alt="Mark Xu" fill className="object-cover" priority />
+            </SpringHover>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-72 md:h-72 bg-blue-500/10 rounded-full blur-3xl z-0 pointer-events-none"></div>
           </div>
-        </section>
+        </FadeIn>
 
-        {/* --- 2. 新增：关于我 (Bio Section) --- */}
-        <section id="about" className="mb-32 scroll-mt-24">
-          <h2 className="text-2xl font-semibold text-white mb-8 flex items-center gap-2">
-            <Sparkles className="text-yellow-500" /> 关于我
-          </h2>
-          <div className="bg-neutral-900/50 border border-neutral-800 rounded-2xl p-8 leading-relaxed text-neutral-300 space-y-4">
-            <p>
-              你好！我是 Mark xu，目前是一名SPTC大二在读生。虽然主修<span className="text-blue-400 font-medium">电子信息工程</span>，但我对计算机科学有着极大的热情。
-            </p>
-            <p>
-              我的编程之旅始于对互联网的好奇，目前正在自学 UESTC 的计算机科学学士学位。在中职时期，我接触了计算机基础，现在则专注于 <span className="text-purple-400 font-medium">Web3前端开发</span> 和 <span className="text-purple-400 font-medium">区块链技术</span> 的探索。
-            </p>
-            <p>
-              专注于 Next.js 生态与 AI Agent 的落地应用。擅长将复杂的业务逻辑转化为高性能、高可用性的前端交互体验。目前正在探索 Web3 去中心化身份（DID）与前端的结合。
-            </p>
-            <p className="pt-4 text-neutral-500 text-sm italic border-t border-neutral-800 mt-6">
-              “Learning Path: 学习各种新兴技术vibe codeing，具备持续的自驱动学习能力。”
-            </p>
+        {/* --- Divider --- */}
+        <div className="w-full h-px bg-linear-to-r from-transparent via-neutral-800 to-transparent my-4 md:my-10"></div>
+
+        {/* --- Featured Projects --- */}
+        <FadeInView className="py-16 scroll-mt-24" id="projects">
+          <div className="mb-10">
+            <p className="text-blue-500 font-mono text-sm mb-2">开源与实践探索</p>
+            <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
+              <Code2 className="text-blue-500" /> 精选项目
+            </h2>
           </div>
-        </section>
 
-        {/* 3. 技能栈 (保持不变) */}
-        <section id="skills" className="mb-32 scroll-mt-24">
-          <h2 className="text-2xl font-semibold text-white mb-8 flex items-center gap-2">
-            <Terminal className="text-blue-500" /> 技术栈
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {SKILLS.map((skill) => (
-              <div key={skill} className="group p-4 bg-neutral-900/50 border border-neutral-800 rounded-lg hover:border-blue-500/50 hover:bg-blue-500/5 transition-all cursor-default text-center">
-                <span className="group-hover:text-blue-400 transition-colors">{skill}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 4. 项目展示 (保持不变) */}
-        <section id="projects" className="mb-32 scroll-mt-24">
-          <h2 className="text-2xl font-semibold text-white mb-8 flex items-center gap-2">
-            <Code2 className="text-purple-500" /> 精选项目
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <StaggerContainer className="grid md:grid-cols-2 gap-5">
             {PROJECTS.map((project, index) => (
-              <div key={index} className="group relative p-6 bg-neutral-900 border border-neutral-800 rounded-xl hover:bg-neutral-800/80 transition-all flex flex-col h-full">
-                <div className="mb-auto">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-neutral-400 text-sm mb-4">
-                    {project.desc}
-                  </p>
-                </div>
+              <StaggerItem key={index}>
+                <SpringHover className="h-full">
+                  <div className="group flex flex-col h-full p-6 bg-neutral-900/40 border border-neutral-800/60 rounded-2xl hover:border-neutral-700 transition-colors backdrop-blur-sm relative overflow-hidden">
+                    <div className="mb-auto relative z-10">
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-neutral-400 text-sm leading-relaxed mb-6 font-light">
+                        {project.desc}
+                      </p>
+                    </div>
 
-                <div className="flex gap-2 flex-wrap mb-6">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-xs font-mono px-2 py-1 rounded bg-neutral-800 text-neutral-400 border border-neutral-700">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                    <div className="flex gap-2 flex-wrap mb-6 relative z-10">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs font-mono px-2 py-1 rounded-md bg-neutral-950/50 text-neutral-400 border border-neutral-800/50"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
 
-                {project.isExternal ? (
-                  /* 外部链接：保持使用 ExternalLink (↗) */
-                  <a href={project.link} target="_blank" className="inline-flex items-center text-sm font-medium text-white hover:underline mt-auto">
-                    View Source <ExternalLink size={14} className="ml-1" />
-                  </a>
-                ) : (
-                  /* 内部链接：改用 ArrowRight (→)，并且加了移动动画而不是旋转 */
-                  <Link href={project.link} className="inline-flex items-center text-sm font-medium text-white hover:underline mt-auto">
-                    View Details <ArrowRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                )}
-              </div>
+                    <div className="mt-auto relative z-10">
+                      {project.isExternal ? (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm font-medium text-neutral-300 hover:text-blue-400 transition-colors"
+                        >
+                          View Source <ExternalLink size={14} className="ml-1.5" />
+                        </a>
+                      ) : (
+                        <Link
+                          href={project.link}
+                          className="inline-flex items-center text-sm font-medium text-neutral-300 hover:text-blue-400 transition-colors"
+                        >
+                          View Details{" "}
+                          <ArrowRight
+                            size={14}
+                            className="ml-1.5 group-hover:translate-x-1 transition-transform"
+                          />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </SpringHover>
+              </StaggerItem>
             ))}
-          </div>
-        </section>
+          </StaggerContainer>
+        </FadeInView>
 
-        {/* 页脚 */}
-        <footer className="pt-10 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
-          <p>© 2025 Mark xu. Built with Next.js & Tailwind.</p>
-          <a href="mailto:your.email@example.com" className="flex items-center gap-2 hover:text-white transition-colors">
-            <Mail size={16} />
-            Email Me
-          </a>
-        </footer>
+        {/* --- Skills Section --- */}
+        <FadeInView className="py-16 scroll-mt-24" id="skills">
+          <div className="mb-10">
+            <p className="text-purple-500 font-mono text-sm mb-2">技术武器库</p>
+            <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
+              <Terminal className="text-purple-500" /> 技术栈
+            </h2>
+          </div>
+          
+          {/* 这里依然还原了您所需的网格卡片结构 (4列) */}
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {SKILLS.map((skill, index) => (
+              <StaggerItem key={index}>
+                <SpringHover className="flex items-center justify-center p-4 bg-neutral-900/40 border border-neutral-800/60 rounded-xl hover:border-purple-500/50 hover:bg-purple-500/5 transition-colors cursor-default shadow-sm backdrop-blur-sm text-neutral-400 hover:text-purple-400 font-medium">
+                  {skill}
+                </SpringHover>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </FadeInView>
+
+        {/* --- Footer --- */}
+        <FadeInView>
+          <footer className="mt-20 pt-8 border-t border-neutral-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+            <p>© {new Date().getFullYear()} Mark xu. 保持热爱，奔赴山海。</p>
+            <div className="flex items-center gap-6">
+              <Link href="/about" className="hover:text-white transition-colors">关于我</Link>
+              <a href="https://github.com/sijiruchuen" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Github</a>
+              <a href="mailto:contact@sijiruchuen.xyz" className="hover:text-white transition-colors">联系我</a>
+            </div>
+          </footer>
+        </FadeInView>
 
       </main>
     </div>

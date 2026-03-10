@@ -5,8 +5,8 @@ import XIcon from "@/components/Icons";
 
 // 导航数据配置
 const NAV_ITEMS = [     
-{ name: '技术栈', href: '/#skills' },// 注意：加了 / 防止在其他页面点击时跳不回来
-{ name: '我的项目', href: '/#projects' },
+  { name: '首页', href: '/' },
+  { name: '关于我', href: '/about' },
 ];
 
 export default function Navbar() {
