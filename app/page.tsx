@@ -8,6 +8,7 @@ import {
   Terminal,
   Code2,
   ExternalLink,
+  Briefcase,
 } from "lucide-react";
 
 import { SpringHover } from "@/components/motion";
@@ -19,29 +20,33 @@ import {
 import { gsap } from "@/lib/gsap";
 
 const SKILLS = [
-  "Next.js",
-  "React",
+  "JavaScript",
   "TypeScript",
+  "React",
+  "Next.js",
   "Tailwind CSS",
-  "Node.js",
+  "Radix UI",
+  "Prisma",
+  "PostgreSQL",
   "Solidity",
-  "Web3.js",
+  "Hardhat",
+  "wagmi",
   "Git",
 ];
 
 const PROJECTS = [
   {
-    title: "Web3 DApp Dashboard",
-    desc: "一个基于 Next.js 和 Wagmi 的去中心化应用 NFT 交易市场。",
-    tags: ["Next.js", "React", "Wagmi"],
-    link: "https://github.com",
+    title: "PixelForge AIGC 图像生成平台",
+    desc: "基于 Next.js 开发的 AI 图像生成平台，支持文生图、图生图、注册登录、公开作品广场、个人作品管理与积分扣费。",
+    tags: ["Next.js 16", "React 19", "Prisma", "PostgreSQL", "Gemini API"],
+    link: "https://my-aigc-app-8xgd.vercel.app/explore",
     isExternal: true,
   },
   {
-    title: "Mark 的 AI 工坊",
-    desc: "基于 AI 图像生成技术的商业化服务流程。利用 Stable Diffusion 和 Photoshop 为客户提供定制化修图服务，优化了 Prompt 工程流",
-    tags: ["Nanobanana", "React", "Tailwind css"],
-    link: "/projects/iot-platform",
+    title: "CyberPunk NFT Mint 与交易 DApp",
+    desc: "基于 Next.js 与 Solidity 开发的 NFT Mint 与交易市场，支持钱包连接、链上 mint、上架与购买流程。",
+    tags: ["Solidity", "Hardhat", "wagmi", "OpenZeppelin", "Sepolia"],
+    link: "/projects/cyberpunk-nft",
     isExternal: false,
   },
 ];
@@ -102,17 +107,25 @@ export default function Home() {
             </h1>
 
             <GsapReveal delay={1} direction="up">
-              <p className="text-xl md:text-2xl text-neutral-400 font-light flex items-center gap-3">
-                Web3 探索者{" "}
-                <span className="text-neutral-700">|</span> 全栈开发者
+              <p className="text-xl md:text-2xl text-neutral-400 font-light flex items-center gap-3 flex-wrap">
+                前端开发
+                <span className="text-neutral-700">|</span> Web3 探索者
+                <span className="text-neutral-700">|</span> 全栈学习者
+              </p>
+            </GsapReveal>
+
+            <GsapReveal delay={1.1} direction="up">
+              <p className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
+                <Briefcase size={14} />
+                求职意向：前端开发
               </p>
             </GsapReveal>
 
             <GsapReveal delay={1.2} direction="up">
               <p className="text-neutral-500 max-w-lg leading-relaxed">
-                就读于 SPTC
-                电子信息工程专业。致力于构建连接现实硬件与去中心化网络的数字桥梁。热爱开源、Web3
-                与 AI 技术。
+                就读于 SPTC 电子信息工程专业，同时自考 UESTC
+                计算机科学与技术本科。热爱开源、Web3 与 AI
+                技术，致力于构建去中心化应用与高性能前端体验。
               </p>
             </GsapReveal>
 
@@ -163,7 +176,7 @@ export default function Home() {
         <GsapReveal className="py-16 scroll-mt-24" id="projects">
           <div className="mb-10">
             <p className="text-blue-500 font-mono text-sm mb-2">
-              开源与实践探索
+              项目经历
             </p>
             <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
               <Code2 className="text-blue-500" /> 精选项目
@@ -202,7 +215,7 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-sm font-medium text-neutral-300 hover:text-blue-400 transition-colors"
                       >
-                        View Source{" "}
+                        在线演示{" "}
                         <ExternalLink size={14} className="ml-1.5" />
                       </a>
                     ) : (
@@ -210,7 +223,7 @@ export default function Home() {
                         href={project.link}
                         className="inline-flex items-center text-sm font-medium text-neutral-300 hover:text-blue-400 transition-colors"
                       >
-                        View Details{" "}
+                        查看详情{" "}
                         <ArrowRight
                           size={14}
                           className="ml-1.5 group-hover:translate-x-1 transition-transform"
@@ -227,7 +240,7 @@ export default function Home() {
         {/* --- Skills Section --- */}
         <GsapReveal className="py-16 scroll-mt-24" id="skills">
           <div className="mb-10">
-            <p className="text-purple-500 font-mono text-sm mb-2">技术武器库</p>
+            <p className="text-purple-500 font-mono text-sm mb-2">专业技能</p>
             <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
               <Terminal className="text-purple-500" /> 技术栈
             </h2>
@@ -248,7 +261,7 @@ export default function Home() {
         <GsapReveal>
           <footer className="mt-20 pt-8 border-t border-neutral-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
             <p>
-              © {new Date().getFullYear()} Mark xu. 保持热爱，奔赴山海。
+              © {new Date().getFullYear()} Mark Xu. 保持热爱，奔赴山海。
             </p>
             <div className="flex items-center gap-6">
               <Link
@@ -266,7 +279,7 @@ export default function Home() {
                 Github
               </a>
               <a
-                href="mailto:contact@sijiruchuen.xyz"
+                href="mailto:chuenqiuwanzai@gmail.com"
                 className="hover:text-white transition-colors"
               >
                 联系我
