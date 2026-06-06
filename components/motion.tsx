@@ -10,12 +10,12 @@ export const FadeIn = ({
 }: HTMLMotionProps<"div"> & { delay?: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.5,
+        duration: 0.45,
         delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        ease: [0.33, 1, 0.68, 1],
       }}
       className={className}
       {...props}
@@ -38,7 +38,7 @@ export const StaggerContainer = ({
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: 0.1,
+            staggerChildren: 0.08,
           },
         },
       }}
@@ -58,13 +58,13 @@ export const StaggerItem = ({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 16 },
         visible: {
           opacity: 1,
           y: 0,
           transition: {
-            duration: 0.5,
-            ease: [0.21, 0.47, 0.32, 0.98],
+            duration: 0.45,
+            ease: [0.33, 1, 0.68, 1],
           },
         },
       }}
@@ -83,12 +83,12 @@ export const FadeInView = ({
 }: HTMLMotionProps<"div">) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{
-        duration: 0.5,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        duration: 0.45,
+        ease: [0.33, 1, 0.68, 1],
       }}
       className={className}
       {...props}
@@ -105,12 +105,13 @@ export const SpringHover = ({
 }: HTMLMotionProps<"div">) => {
   return (
     <motion.div
-      whileHover={{ y: -2, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ y: -2, scale: 1.01 }}
+      whileTap={{ scale: 0.985 }}
       transition={{
         type: "spring",
-        stiffness: 400,
-        damping: 25,
+        stiffness: 500,
+        damping: 30,
+        mass: 0.8,
       }}
       className={className}
       {...props}

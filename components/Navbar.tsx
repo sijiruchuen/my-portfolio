@@ -24,9 +24,9 @@ export default function Navbar() {
       end: "bottom bottom",
       onUpdate: ({ progress }) => {
         gsap.to(nav, {
-          backgroundColor: `rgba(10, 10, 10, ${0.3 + progress * 0.62})`,
-          borderBottomColor: `rgba(38, 38, 38, ${Math.min(progress * 2, 1)})`,
-          boxShadow: `0 1px 3px rgba(0,0,0,${Math.min(progress, 1) * 0.3})`,
+          backgroundColor: `rgba(10, 10, 8, ${0.2 + progress * 0.65})`,
+          borderBottomColor: `rgba(58, 58, 54, ${Math.min(progress * 2, 1) * 0.3})`,
+          boxShadow: `0 1px 3px rgba(0,0,0,${Math.min(progress, 1) * 0.2})`,
           duration: 0.2,
         });
       },
@@ -38,14 +38,15 @@ export default function Navbar() {
   return (
     <div
       ref={navRef}
-      className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-transparent bg-neutral-950/30"
+      className="fixed top-0 w-full z-50 backdrop-blur-xl border-b border-transparent"
+      style={{ backgroundColor: "rgba(10, 10, 8, 0.2)" }}
     >
-      <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="font-bold text-xl tracking-tighter hover:text-white transition-colors"
+          className="font-display font-bold text-lg tracking-tight hover:text-white transition-colors"
         >
-          The Blog of Mark Xu
+          Mark Xu
         </Link>
 
         <div className="hidden md:flex gap-6">
@@ -53,21 +54,21 @@ export default function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-neutral-400 hover:text-blue-400 transition-colors"
+              className="text-sm font-medium text-surface-400 hover:text-accent-300 transition-colors"
             >
               {item.name}
             </Link>
           ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 text-surface-500">
           <a
             href="https://github.com/sijiruchuen"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            <Github size={20} />
+            <Github size={18} />
           </a>
           <a
             href="https://x.com/mark_xu17172"
@@ -75,7 +76,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            <XIcon size={20} />
+            <XIcon size={18} />
           </a>
         </div>
       </div>

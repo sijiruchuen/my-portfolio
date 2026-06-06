@@ -58,7 +58,7 @@ export function GsapReveal({
           gsap.fromTo(
             el,
             { opacity: 0, x, y },
-            { opacity: 1, x: 0, y: 0, duration: 0.8, delay, ease: "power3.out" }
+            { opacity: 1, x: 0, y: 0, duration: 0.7, delay, ease: "power2.out" }
           );
         },
       });
@@ -103,10 +103,10 @@ export function GsapStagger({
             {
               opacity: 1,
               y: 0,
-              duration: 0.6,
+              duration: 0.5,
               stagger,
               delay,
-              ease: "power3.out",
+              ease: "power2.out",
             }
           );
         },

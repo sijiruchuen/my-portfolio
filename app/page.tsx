@@ -63,9 +63,9 @@ export default function Home() {
         {
           opacity: 1,
           scale: 1,
-          duration: 1,
-          delay: 0.5,
-          ease: "back.out(1.7)",
+          duration: 0.9,
+          delay: 0.4,
+          ease: "back.out(1.4)",
         }
       );
     }
@@ -76,8 +76,8 @@ export default function Home() {
         {
           opacity: 1,
           scale: 1,
-          duration: 1.2,
-          delay: 0.7,
+          duration: 1.1,
+          delay: 0.6,
           ease: "power3.out",
         }
       );
@@ -86,62 +86,65 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <main className="max-w-4xl mx-auto px-6 pt-24 pb-20">
+      <main className="max-w-3xl mx-auto px-6 pt-24 pb-20">
         {/* --- Hero Section --- */}
-        <div className="py-20 flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="flex-1 space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-2">
-              <GsapTextSplit
-                text="Hello, I'm"
-                as="span"
-                className="block"
-                delay={0.1}
-              />
-              <br className="hidden md:block" />
-              <GsapTextSplit
-                text="Mark Xu"
-                as="span"
-                className="text-blue-500"
-                delay={0.7}
-              />
-            </h1>
+        <div className="py-16 md:py-24 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
+          <div className="flex-1 space-y-5">
+            <div className="space-y-2">
+              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.08]">
+                <GsapTextSplit
+                  text="Hello, I'm"
+                  as="span"
+                  className="block text-surface-400 font-light text-2xl md:text-3xl tracking-normal mb-1"
+                  delay={0.1}
+                />
+                <GsapTextSplit
+                  text="Mark Xu"
+                  as="span"
+                  className="text-accent-400 font-display"
+                  delay={0.6}
+                />
+              </h1>
+            </div>
 
-            <GsapReveal delay={1} direction="up">
-              <p className="text-xl md:text-2xl text-neutral-400 font-light flex items-center gap-3 flex-wrap">
+            <GsapReveal delay={0.9} direction="up">
+              <p className="text-lg text-surface-400 font-light flex items-center gap-3 flex-wrap">
                 前端开发
-                <span className="text-neutral-700">|</span> Web3 探索者
-                <span className="text-neutral-700">|</span> 全栈学习者
+                <span className="text-surface-800">|</span>
+                Web3 探索者
+                <span className="text-surface-800">|</span>
+                全栈学习者
               </p>
             </GsapReveal>
 
-            <GsapReveal delay={1.1} direction="up">
-              <p className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium">
+            <GsapReveal delay={1.0} direction="up">
+              <p className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-400/8 border border-accent-400/15 text-accent-300 text-sm font-medium">
                 <Briefcase size={14} />
                 求职意向：前端开发
               </p>
             </GsapReveal>
 
-            <GsapReveal delay={1.2} direction="up">
-              <p className="text-neutral-500 max-w-lg leading-relaxed">
+            <GsapReveal delay={1.1} direction="up">
+              <p className="text-surface-500 max-w-lg leading-relaxed text-[15px]">
                 就读于 SPTC 电子信息工程专业，同时自考 UESTC
                 计算机科学与技术本科。热爱开源、Web3 与 AI
                 技术，致力于构建去中心化应用与高性能前端体验。
               </p>
             </GsapReveal>
 
-            <GsapReveal delay={1.4} direction="up">
-              <div className="flex items-center gap-4 pt-4">
+            <GsapReveal delay={1.3} direction="up">
+              <div className="flex items-center gap-3 pt-3">
                 <Link
                   href="/about"
-                  className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-xl bg-accent-600 hover:bg-accent-500 text-white font-medium transition-colors text-sm flex items-center gap-2 shadow-lg shadow-accent-600/20"
                 >
-                  关于我 <ArrowRight size={16} />
+                  关于我 <ArrowRight size={15} />
                 </Link>
                 <a
                   href="https://github.com/sijiruchuen"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-neutral-300 font-medium transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-surface-800/40 hover:bg-surface-800/60 text-surface-300 font-medium transition-colors text-sm border border-surface-800/30"
                 >
                   Github
                 </a>
@@ -151,7 +154,7 @@ export default function Home() {
 
           {/* Avatar */}
           <div ref={avatarRef} className="relative shrink-0 flex justify-center">
-            <SpringHover className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border border-neutral-800 bg-neutral-900 relative z-10 block">
+            <SpringHover className="w-36 h-36 md:w-52 md:h-52 rounded-2xl overflow-hidden border border-surface-800/50 bg-surface-900 relative z-10 block shadow-2xl shadow-accent-600/5">
               <Image
                 src="/avatar.png"
                 alt="Mark Xu"
@@ -162,45 +165,49 @@ export default function Home() {
             </SpringHover>
             <div
               ref={glowRef}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-72 md:h-72 bg-blue-500/10 rounded-full blur-3xl z-0 pointer-events-none"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-64 md:h-64 bg-accent-500/8 rounded-full blur-3xl z-0 pointer-events-none"
             />
           </div>
         </div>
 
         {/* --- Divider --- */}
         <GsapReveal>
-          <div className="w-full h-px bg-linear-to-r from-transparent via-neutral-800 to-transparent my-4 md:my-10" />
+          <div className="w-full h-px bg-linear-to-r from-transparent via-surface-800/50 to-transparent my-4 md:my-12" />
         </GsapReveal>
 
         {/* --- Featured Projects --- */}
-        <GsapReveal className="py-16 scroll-mt-24" id="projects">
-          <div className="mb-10">
-            <p className="text-blue-500 font-mono text-sm mb-2">
-              项目经历
+        <GsapReveal className="py-14 scroll-mt-24" id="projects">
+          <div className="mb-8">
+            <p className="text-accent-400 font-mono text-xs tracking-widest uppercase mb-3">
+              Featured Work
             </p>
-            <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
-              <Code2 className="text-blue-500" /> 精选项目
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight flex items-center gap-2.5 font-display">
+              <Code2 className="text-accent-400" size={26} />
+              精选项目
             </h2>
           </div>
 
-          <GsapStagger className="grid md:grid-cols-2 gap-5" stagger={0.15}>
+          <GsapStagger className="grid md:grid-cols-2 gap-4" stagger={0.12}>
             {PROJECTS.map((project, index) => (
               <SpringHover key={index} className="h-full">
-                <div className="group flex flex-col h-full p-6 bg-neutral-900/40 border border-neutral-800/60 rounded-2xl hover:border-neutral-700 transition-colors backdrop-blur-sm relative overflow-hidden">
+                <div className="group flex flex-col h-full p-5 bg-surface-900/60 border border-surface-800/30 rounded-2xl hover:border-surface-700/50 transition-all duration-300 relative overflow-hidden">
+                  {/* Subtle gradient hover reveal */}
+                  <div className="absolute inset-0 bg-linear-to-br from-accent-500/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+
                   <div className="mb-auto relative z-10">
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-base font-bold text-white mb-1.5 group-hover:text-accent-300 transition-colors font-display tracking-tight">
                       {project.title}
                     </h3>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-6 font-light">
+                    <p className="text-surface-500 text-sm leading-relaxed mb-5 font-light">
                       {project.desc}
                     </p>
                   </div>
 
-                  <div className="flex gap-2 flex-wrap mb-6 relative z-10">
+                  <div className="flex gap-1.5 flex-wrap mb-5 relative z-10">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs font-mono px-2 py-1 rounded-md bg-neutral-950/50 text-neutral-400 border border-neutral-800/50"
+                        className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-800/30 text-surface-400"
                       >
                         {tag}
                       </span>
@@ -213,19 +220,19 @@ export default function Home() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm font-medium text-neutral-300 hover:text-blue-400 transition-colors"
+                        className="inline-flex items-center text-sm font-medium text-surface-400 hover:text-accent-300 transition-colors"
                       >
                         在线演示{" "}
-                        <ExternalLink size={14} className="ml-1.5" />
+                        <ExternalLink size={13} className="ml-1.5" />
                       </a>
                     ) : (
                       <Link
                         href={project.link}
-                        className="inline-flex items-center text-sm font-medium text-neutral-300 hover:text-blue-400 transition-colors"
+                        className="inline-flex items-center text-sm font-medium text-surface-400 hover:text-accent-300 transition-colors"
                       >
                         查看详情{" "}
                         <ArrowRight
-                          size={14}
+                          size={13}
                           className="ml-1.5 group-hover:translate-x-1 transition-transform"
                         />
                       </Link>
@@ -238,18 +245,21 @@ export default function Home() {
         </GsapReveal>
 
         {/* --- Skills Section --- */}
-        <GsapReveal className="py-16 scroll-mt-24" id="skills">
-          <div className="mb-10">
-            <p className="text-purple-500 font-mono text-sm mb-2">专业技能</p>
-            <h2 className="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
-              <Terminal className="text-purple-500" /> 技术栈
+        <GsapReveal className="py-14 scroll-mt-24" id="skills">
+          <div className="mb-8">
+            <p className="text-amber-400/80 font-mono text-xs tracking-widest uppercase mb-3">
+              Tech Stack
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight flex items-center gap-2.5 font-display">
+              <Terminal className="text-amber-400/80" size={26} />
+              技术栈
             </h2>
           </div>
 
-          <GsapStagger className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <GsapStagger className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {SKILLS.map((skill, index) => (
               <SpringHover key={index}>
-                <div className="flex items-center justify-center p-4 bg-neutral-900/40 border border-neutral-800/60 rounded-xl hover:border-purple-500/50 hover:bg-purple-500/5 transition-colors cursor-default shadow-sm backdrop-blur-sm text-neutral-400 hover:text-purple-400 font-medium">
+                <div className="flex items-center justify-center px-4 py-3.5 bg-surface-900/60 border border-surface-800/30 rounded-xl hover:border-amber-400/20 hover:bg-amber-400/3 transition-all duration-300 cursor-default text-surface-400 hover:text-amber-300 text-sm font-medium">
                   {skill}
                 </div>
               </SpringHover>
@@ -259,14 +269,14 @@ export default function Home() {
 
         {/* --- Footer --- */}
         <GsapReveal>
-          <footer className="mt-20 pt-8 border-t border-neutral-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+          <footer className="mt-16 pt-8 border-t border-surface-800/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-surface-600">
             <p>
-              © {new Date().getFullYear()} Mark Xu. 保持热爱，奔赴山海。
+              &copy; {new Date().getFullYear()} Mark Xu. 保持热爱，奔赴山海。
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-5">
               <Link
                 href="/about"
-                className="hover:text-white transition-colors"
+                className="hover:text-surface-300 transition-colors"
               >
                 关于我
               </Link>
@@ -274,13 +284,13 @@ export default function Home() {
                 href="https://github.com/sijiruchuen"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-surface-300 transition-colors"
               >
                 Github
               </a>
               <a
                 href="mailto:chuenqiuwanzai@gmail.com"
-                className="hover:text-white transition-colors"
+                className="hover:text-surface-300 transition-colors"
               >
                 联系我
               </a>

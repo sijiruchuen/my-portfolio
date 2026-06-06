@@ -3,10 +3,97 @@
 
 @theme {
   --font-sans: "Inter", "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  /* Refined neutral palette — warmer, less pure-black */
+  --color-surface-50: #f8f8f7;
+  --color-surface-100: #f0f0ee;
+  --color-surface-200: #e4e4e1;
+  --color-surface-300: #c8c8c4;
+  --color-surface-400: #a6a6a1;
+  --color-surface-500: #8a8a84;
+  --color-surface-600: #6e6e69;
+  --color-surface-700: #565651;
+  --color-surface-800: #3a3a36;
+  --color-surface-900: #1c1c1a;
+  --color-surface-950: #0f0f0d;
+
+  /* Accent — electric blue with better saturation */
+  --color-accent-50: #eef4ff;
+  --color-accent-100: #d9e6ff;
+  --color-accent-200: #bcd0ff;
+  --color-accent-300: #8eaeff;
+  --color-accent-400: #5980ff;
+  --color-accent-500: #3358ff;
+  --color-accent-600: #1a33e0;
+  --color-accent-700: #1629b5;
+  --color-accent-800: #18268f;
+  --color-accent-900: #1a2576;
+  --color-accent-950: #131749;
+
+  /* Secondary — warm amber/gold for contrast */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+  --color-amber-950: #451a03;
 }
 
 @layer base {
   body {
-    @apply antialiased font-sans bg-neutral-950 text-neutral-200 selection:bg-blue-500/30 selection:text-blue-50;
+    @apply antialiased font-sans text-surface-400;
+    background-color: #0a0a08;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(51, 88, 255, 0.06), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(51, 88, 255, 0.03), transparent);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: rgba(51, 88, 255, 0.25);
+    color: #d9e6ff;
+  }
+
+  /* Headings use the display font */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* Scrollbar refinement */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Subtle noise texture overlay — adds depth without the "flat AI" look */
+@layer base {
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
   }
 }
