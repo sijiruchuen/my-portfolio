@@ -1,7 +1,8 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import Image from "next/image";
+import { useRef, useEffect } from "react"
+import Link from "next/link"
+import Image from "next/image"
 import {
   MapPin,
   School,
@@ -9,8 +10,11 @@ import {
   Mail,
   ExternalLink,
   ArrowRight,
-} from "lucide-react";
-import { GsapReveal, GsapStagger, GsapTextSplit } from "@/components/GsapReveal";
+  ChevronDown,
+} from "lucide-react"
+import { TextScramble } from "@/components/ui/text-scramble"
+import { GsapReveal, GsapStagger, GsapTextSplit } from "@/components/GsapReveal"
+import { gsap } from "@/lib/gsap"
 
 const FRONTEND_SKILLS = [
   "JavaScript / TypeScript",
@@ -19,7 +23,7 @@ const FRONTEND_SKILLS = [
   "Tailwind CSS",
   "Radix UI",
   "响应式页面与通用组件封装",
-];
+]
 
 const FULLSTACK_SKILLS = [
   "Next.js 全栈开发",
@@ -28,7 +32,7 @@ const FULLSTACK_SKILLS = [
   "Server Actions",
   "SSR / CSR",
   "前后端一体化架构",
-];
+]
 
 const AUTH_DB_SKILLS = [
   "NextAuth / JWT / Session",
@@ -36,19 +40,82 @@ const AUTH_DB_SKILLS = [
   "数据建模与 CRUD",
   "事务处理与迁移管理",
   "Neon 数据库接入",
-];
+]
 
 const TOOLING_SKILLS = [
   "Claude Code",
   "Cursor",
   "Git / GitHub",
   "AI 辅助开发调试",
-];
+]
 
 export default function AboutPage() {
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!scrollIndicatorRef.current) return
+
+    gsap.to(scrollIndicatorRef.current, {
+      y: 8,
+      opacity: 0.4,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      duration: 1.2,
+    })
+  }, [])
+
+  const handleScrollDown = () => {
+    window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
+  }
+
   return (
     <div className="min-h-screen">
-      <main className="max-w-2xl mx-auto px-6 pt-32 pb-24">
+      {/* │││ HERO — Full viewport opening │││ */}
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent-400/[0.03] blur-3xl" />
+        </div>
+
+        {/* Main content */}
+        <div className="relative z-10 flex flex-col items-center gap-8 -mt-16">
+          <p className="text-[10px] uppercase tracking-[0.4em] text-surface-500 font-mono">
+            Hover to decode
+          </p>
+
+          <TextScramble
+            text="MARK XU"
+            className="text-7xl sm:text-8xl md:text-9xl"
+            autoPlay
+          />
+
+          <p className="text-sm text-surface-500 font-light tracking-wide">
+            前端开发 · Web3 探索者
+          </p>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 z-10 flex flex-col items-center gap-2">
+          <span className="text-[10px] text-surface-600 font-mono tracking-[0.3em] uppercase">
+            Scroll
+          </span>
+          <div
+            ref={scrollIndicatorRef}
+            onClick={handleScrollDown}
+            className="cursor-pointer p-2 rounded-full hover:bg-surface-800/30 transition-colors"
+          >
+            <ChevronDown size={20} className="text-surface-500" />
+          </div>
+        </div>
+      </section>
+
+      {/* │││ CONTENT — About details │││ */}
+      <main className="max-w-2xl mx-auto px-6 pb-24">
+        <GsapReveal direction="up">
+          <div className="w-full h-px bg-linear-to-r from-transparent via-surface-800/50 to-transparent mb-10" />
+        </GsapReveal>
+
         {/* Header */}
         <div className="mb-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3 text-white font-display">
@@ -283,7 +350,7 @@ export default function AboutPage() {
         </GsapReveal>
       </main>
     </div>
-  );
+  )
 }
 
 function SkillCard({
@@ -291,9 +358,9 @@ function SkillCard({
   items,
   color,
 }: {
-  title: string;
-  items: string[];
-  color: "blue" | "purple" | "emerald" | "amber";
+  title: string
+  items: string[]
+  color: "blue" | "purple" | "emerald" | "amber"
 }) {
   const colorMap = {
     blue: {
@@ -320,9 +387,9 @@ function SkillCard({
       dot: "bg-amber-400/60",
       text: "text-amber-300",
     },
-  };
+  }
 
-  const c = colorMap[color];
+  const c = colorMap[color]
 
   return (
     <div className={`p-4 rounded-xl ${c.bg} border ${c.border}`}>
@@ -341,5 +408,5 @@ function SkillCard({
         ))}
       </ul>
     </div>
-  );
+  )
 }

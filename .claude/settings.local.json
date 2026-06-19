@@ -14,7 +14,11 @@
       "Bash(npx skills *)",
       "Bash(SKILLS_CLONE_TIMEOUT_MS=600000 npx skills *)",
       "Bash(SKILLS_CLONE_TIMEOUT_MS=900000 npx skills *)",
-      "Bash(cp *)"
+      "Bash(cp *)",
+      "Bash(Get-ChildItem -Path \"F:\\\\编程\\\\my-portfolio\\\\my-portfolio\" -Recurse -Depth 4 -Directory -Exclude \"node_modules\",\".next\",\".git\")",
+      "Bash(Select-Object FullName)",
+      "Bash(New-Item *)",
+      "Bash(npx next *)"
     ]
   }
 }
