@@ -8,7 +8,13 @@
       "Bash(ssh -o ConnectTimeout=5 -T git@github.com)",
       "Bash(ping -n 2 github.com)",
       "Bash(ssh *)",
-      "Bash(ssh-keygen *)"
+      "Bash(ssh-keygen *)",
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "Bash(npx skills *)",
+      "Bash(SKILLS_CLONE_TIMEOUT_MS=600000 npx skills *)",
+      "Bash(SKILLS_CLONE_TIMEOUT_MS=900000 npx skills *)",
+      "Bash(cp *)"
     ]
   }
 }
